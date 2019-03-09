@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Midterm.StockTab"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    Style="{StaticResource backgroundStyle}">
+    <StackLayout>
+        <SearchBar
+            x:Name="SearchBar"
+            Style="{StaticResource backgroundStyle}"
+            TextChanged="Handle_TextChanged"
+            Margin="16, 16, 16, 16"
+            Placeholder="Search stock data" />
+        <ListView
+            x:Name="SearchListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="{Binding Symbol}"
+                                FontSize="20"
+                                Margin="20,5" />
+                            <Label
+                                HorizontalOptions="End"
+                                Text="{Binding Name}"
+                                Margin="20,5" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView
+            Style="{StaticResource backgroundStyle}"
+            x:Name="StockListView"
+            RowHeight="110">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout
+                                Margin="16, 16, 0, 0"
+                                VerticalOptions="Center"
+                                Orientation="Vertical">
+                                <Label
+                                    Text="{Binding Key, StringFormat='{0:N} &gt;'}"
+                                    Style="{StaticResource labelStyle}"
+                                    FontAttributes="Bold" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width="*" />
+                                        <ColumnDefinition
+                                            Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition
+                                            Height="*" />
+                                        <RowDefinition
+                                            Height="*" />
+                                        <RowDefinition
+                                            Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="High"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource labelStyle}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="{Binding Value.High, StringFormat='${0:N}'}"
+                                        Style="{StaticResource labelStyle}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="Low"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource labelStyle}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding Value.Low, StringFormat='${0:N}'}"
+                                        Style="{StaticResource labelStyle}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Text="Close"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource labelStyle}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Text="{Binding Value.Close, StringFormat='${0:N}'}"
+                                        Style="{StaticResource labelStyle}" />
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

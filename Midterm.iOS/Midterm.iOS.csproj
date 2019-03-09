@@ -114,6 +114,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\List.imageset\baseline_list_black_18dp.png" />
+    <ImageAsset Include="Assets.xcassets\List.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Chart.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Chart.imageset\baseline_bar_chart_black_18dp.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -130,5 +134,9 @@
       <Project>{55D0BEF8-69AA-4739-B576-4F7654C3200F}</Project>
       <Name>Midterm</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\List.imageset\" />
+    <Folder Include="Assets.xcassets\Chart.imageset\" />
   </ItemGroup>
 </Project>

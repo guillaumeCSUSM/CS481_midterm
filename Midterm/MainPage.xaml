@@ -1,14 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
+<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Midterm"
-    x:Class="Midterm.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label
-            Text="Welcome to Xamarin.Forms!"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-</ContentPage>
+    x:Class="Midterm.MainPage"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    android:TabbedPage.ToolbarPlacement="Bottom">
+    <local:StockTab
+        Title="Stock"
+        Icon="List" />
+    <local:StockChartTab
+        Title="Stock chart"
+        Icon="Chart" />
+</TabbedPage>

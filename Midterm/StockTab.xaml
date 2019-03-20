@@ -7,33 +7,66 @@
     ios:Page.UseSafeArea="true"
     Style="{StaticResource backgroundStyle}">
     <StackLayout>
-        <SearchBar
-            x:Name="SearchBar"
-            Style="{StaticResource backgroundStyle}"
-            TextChanged="Handle_TextChanged"
-            Margin="16, 16, 16, 16"
-            Placeholder="Search stock data" />
-        <ListView
-            x:Name="SearchListView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout
-                            Orientation="Horizontal">
-                            <Label
-                                HorizontalOptions="Start"
-                                Text="{Binding Symbol}"
-                                FontSize="20"
-                                Margin="20,5" />
-                            <Label
-                                HorizontalOptions="End"
-                                Text="{Binding Name}"
-                                Margin="20,5" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="3*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
+            <SearchBar
+                Grid.Column="0"
+                Grid.Row="0"
+                x:Name="SearchBar"
+                Style="{StaticResource backgroundStyle}"
+                Margin="16, 16, 16, 16"
+                Placeholder="Search stock data" />
+            <Button
+                Grid.Column="1"
+                Grid.Row="0"
+                Clicked="Handle_Clicked"
+                Text="Search" />
+        </Grid>
+        <StackLayout
+            Margin="16, 0, 0, 0"
+            Orientation="Horizontal">
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="Symbol: " />
+            <Label
+                Style="{StaticResource labelStyle}"
+                x:Name="LabelSymbol"
+                FontAttributes="Bold"
+                Text="30" />
+        </StackLayout>
+        <StackLayout
+            Margin="16, 0, 0, 0"
+            Orientation="Horizontal">
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="Highest: " />
+            <Label
+                Style="{StaticResource labelStyle}"
+                x:Name="LabelHighest"
+                FontAttributes="Bold"
+                Text="30" />
+        </StackLayout>
+        <StackLayout
+            Margin="16, 0, 0, 0"
+            Orientation="Horizontal">
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="Lowest: " />
+            <Label
+                Style="{StaticResource labelStyle}"
+                x:Name="LabelLowest"
+                FontAttributes="Bold"
+                Text="30" />
+        </StackLayout>
         <ListView
             Style="{StaticResource backgroundStyle}"
             x:Name="StockListView"

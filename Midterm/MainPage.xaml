@@ -6,10 +6,157 @@
     x:Class="Midterm.MainPage"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     android:TabbedPage.ToolbarPlacement="Bottom">
-    <local:StockTab
+    <ContentPage
         Title="Stock"
-        Icon="List" />
-    <local:StockChartTab
+        Icon="List"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        ios:Page.UseSafeArea="true"
+        Style="{StaticResource backgroundStyle}">
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="3*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="*" />
+                </Grid.RowDefinitions>
+                <SearchBar
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    x:Name="SearchBar"
+                    BackgroundColor="White"
+                    Style="{StaticResource backgroundStyle}"
+                    Margin="16, 16, 16, 16"
+                    Placeholder="Search stock data" />
+                <Button
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    Clicked="Handle_Clicked"
+                    Text="Search" />
+            </Grid>
+            <StackLayout
+                Margin="16, 0, 0, 0"
+                Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource labelStyle}"
+                    Text="Symbol: " />
+                <Label
+                    Style="{StaticResource labelStyle}"
+                    x:Name="LabelSymbol"
+                    FontAttributes="Bold"
+                    Text="30" />
+            </StackLayout>
+            <StackLayout
+                Margin="16, 0, 0, 0"
+                Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource labelStyle}"
+                    Text="Highest: " />
+                <Label
+                    Style="{StaticResource labelStyle}"
+                    x:Name="LabelHighest"
+                    FontAttributes="Bold"
+                    Text="30" />
+            </StackLayout>
+            <StackLayout
+                Margin="16, 0, 0, 0"
+                Orientation="Horizontal">
+                <Label
+                    Style="{StaticResource labelStyle}"
+                    Text="Lowest: " />
+                <Label
+                    Style="{StaticResource labelStyle}"
+                    x:Name="LabelLowest"
+                    FontAttributes="Bold"
+                    Text="30" />
+            </StackLayout>
+            <ListView
+                Style="{StaticResource backgroundStyle}"
+                x:Name="StockListView"
+                RowHeight="110">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout
+                                    Margin="16, 16, 0, 0"
+                                    VerticalOptions="Center"
+                                    Orientation="Vertical">
+                                    <Label
+                                        Text="{Binding Key, StringFormat='{0:N} &gt;'}"
+                                        Style="{StaticResource labelStyle}"
+                                        FontAttributes="Bold" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width="*" />
+                                            <ColumnDefinition
+                                                Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition
+                                                Height="*" />
+                                            <RowDefinition
+                                                Height="*" />
+                                            <RowDefinition
+                                                Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="High"
+                                            FontAttributes="Bold"
+                                            Style="{StaticResource labelStyle}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="{Binding Value.High, StringFormat='${0:N}'}"
+                                            Style="{StaticResource labelStyle}" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="Low"
+                                            FontAttributes="Bold"
+                                            Style="{StaticResource labelStyle}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding Value.Low, StringFormat='${0:N}'}"
+                                            Style="{StaticResource labelStyle}" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Text="Close"
+                                            FontAttributes="Bold"
+                                            Style="{StaticResource labelStyle}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Text="{Binding Value.Close, StringFormat='${0:N}'}"
+                                            Style="{StaticResource labelStyle}" />
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage
         Title="Stock chart"
-        Icon="Chart" />
+        Icon="Chart"
+        xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        ios:Page.UseSafeArea="true"
+        Style="{StaticResource backgroundStyle}">
+        <microcharts:ChartView
+            x:Name="ChartView" />
+    </ContentPage>
 </TabbedPage>

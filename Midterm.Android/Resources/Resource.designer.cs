@@ -26,6 +26,7 @@ namespace Midterm.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Microcharts.Droid.Resource.String.library_name = global::Midterm.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::Midterm.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::Midterm.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::Midterm.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -6111,6 +6112,9 @@ namespace Midterm.Droid
 			
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int library_name = 2131361852;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;
